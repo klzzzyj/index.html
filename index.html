@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曾宜婕的個人簡歷</title>
+    <style>
+        /* ==================== 基礎與通用樣式 ==================== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0; /* 移除 body padding，改在 container 內處理 */
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* 【新增】啟用 CSS 原生平滑捲動 */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px; /* 在這裡設定內邊距 */
+        }
+
+        /* 導航欄樣式 【新增】 */
+        .navbar {
+            background-color: #9e9ee3; /* 紫色背景 */
+            padding: 10px 0;
+            position: sticky; /* 黏性定位，捲動時保持在頂部 */
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            transition: color 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #a0c4ff, #5599ff);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .navbar a:hover {
+            color: #a0c4ff;
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        /* 標題樣式 */
+        .section-title {
+            text-align: center;
+            color: #03174e;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #1355c0;
+            animation: fadeInScale 0.5s ease-out;
+            position: relative;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #1355c0, transparent);
+            animation: expandWidth 0.8s ease-out;
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        /* 通用卡片樣式 */
+        .card-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(37, 105, 139, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            animation: fadeInSlideUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==================== 1. 個人資訊區塊樣式 (Header) ==================== */
+        .header-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(37, 105, 139, 0.1);
+            margin-top: 20px; /* 增加頂部間距 */
+        }
+        
+        @media (min-width: 600px) {
+            .header-section {
+                flex-direction: row;
+                text-align: left;
+                align-items: center;
+            }
+            .profile-photo {
+                margin-right: 30px;
+                margin-bottom: 0;
+            }
+            .info-details {
+                flex-grow: 1;
+            }
+        }
+
+        /* ==================== 手機版優化（< 600px）==================== */
+        @media (max-width: 599px) {
+            .container {
+                padding: 15px;
+            }
+
+            .navbar ul {
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            .navbar li {
+                margin: 5px;
+                flex-basis: calc(50% - 5px);
+                text-align: center;
+            }
+
+            .navbar a {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
+
+            .header-section {
+                padding: 20px;
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .section-title {
+                font-size: 1.4em;
+                padding-bottom: 8px;
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+
+            .card-section {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .skill-item {
+                padding: 15px;
+            }
+
+            .skill-item h3 {
+                font-size: 1em;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline-item {
+                margin-bottom: 20px;
+            }
+
+            .timeline-item::before {
+                left: -28px;
+                width: 8px;
+                height: 8px;
+            }
+
+            .timeline-item h4 {
+                font-size: 1em;
+                margin-bottom: 3px;
+            }
+
+            .timeline-item p {
+                font-size: 0.95em;
+                margin: 5px 0;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-item img {
+                min-height: 150px;
+            }
+
+            .project-details {
+                padding: 12px;
+            }
+
+            .project-details h4 {
+                font-size: 1em;
+            }
+
+            .project-details p {
+                font-size: 0.9em;
+                margin: 5px 0;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .contact-info {
+                font-size: 0.95em;
+            }
+
+            .contact-info p {
+                margin: 5px 0;
+            }
+        }
+        
+        .profile-photo {
+            flex-shrink: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #5599FF;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+        
+        .info-details h1 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #2251d1;
+        }
+
+        .info-details p {
+            margin: 5px 0;
+        }
+
+        .contact-info a {
+            color: #0d55a7;
+            text-decoration: none;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+            color: #101c3e;
+        }
+        
+        /* ==================== 2. 技能展示區樣式 ==================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            padding: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            background-color: #ffffff;
+            text-align: center;
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .skill-item:hover {
+             box-shadow: 0 8px 15px rgba(37, 105, 139, 0.1);
+             background-color: #ffffff;
+        }
+
+        .skill-item h3 {
+            color: #0e325b;
+            margin-top: 0;
+        }
+
+        /* ==================== 3. 經歷時間軸樣式 ==================== */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: #1a74db;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #184ad3;
+            border: 3px solid #ffffff;
+        }
+        
+        .timeline-item h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #1d4bca;
+        }
+        
+        .timeline-item .duration {
+            font-style: italic;
+            color: #421eb8;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-6px) scale(1.02);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+            box-shadow: 0 6px 18px rgba(37,105,139,0.1);
+        }
+
+        .timeline-item {
+            padding: 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            background-color: #f0f5ff;
+        }
+
+        /* ==================== 4. 專案作品集樣式 ==================== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .project-item {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #ffffff;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        box-shadow 0.4s ease,
+                        background-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(37, 105, 139, 0.2);
+            background-color: #f8fbff;
+        }
+
+        .project-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #5599ff, #2251d1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-item:hover::before {
+            opacity: 1;
+        }
+        
+        .project-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .project-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .project-details {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-details h4 {
+            color: #2251d1;
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .project-item:hover .project-details h4 {
+            color: #5599ff;
+        }
+
+        .project-details p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.5;
+            flex: 1;
+            margin: 0;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #5599ff, #2251d1);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(34, 81, 209, 0.2);
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(34, 81, 209, 0.4);
+            background: linear-gradient(135deg, #6ba4ff, #3361e1);
+        }
+
+        .project-link::after {
+            content: ' →';
+            margin-left: 4px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            margin-left: 8px;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#skills-section">技能</a></li>
+            <li><a href="#experience-section">在學幹部經歷</a></li>
+            <li><a href="#portfolio-section">專案作品集</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header class="header-section">
+            <img src="下載 (1).jpg" alt="photo" class="profile-photo">
+            <div class="info-details">
+                <h1>曾宜婕</h1>
+                <p><strong>輔仁大學學生</strong></p>
+                
+                <hr style="border: 0; height: 1px; background-color: #eee; margin: 15px 0;">
+
+                <div class="contact-info">
+                    <p>
+                        Email： <a href="mailto:me19970901@gmail.com">me19970901@gmail.com</a> 
+                     phone number： <span>+886 952999551</span> 
+                        IG：
+    <a href="https://www.instagram.com/9.12_zyj?igsh=MXRma2h4YWkwdWYwYQ%3D%3D&utm_source=qr/" target="_blank">
+      @9.12_zyj</a>
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            
+            <section class="card-section" id="skills-section">
+    <h2 class="section-title">技能</h2>
+    <style>
+        /* A 版本 CSS: 進度條樣式 */
+        .skill-bar-container {
+            margin-bottom: 25px;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-bar-container:hover {
+            background-color: #f8fbff;
+            padding-left: 16px;
+            border-left: 4px solid #5599ff;
+        }
+        .skill-bar-container h3 {
+            margin: 0 0 8px 0;
+            color: #051337;
+            font-size: 1.1em;
+            text-align: left !important;
+        }
+        .progress-bar {
+            background-color: #ffffff;
+            border-radius: 5px;
+            height: 15px;
+        }
+        .progress-level {
+            height: 15px;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #4a90e2, #5599ff);
+            transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            width: 0%; 
+            box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+        }
+        
+        .progress-bar:hover .progress-level {
+            box-shadow: 0 0 15px rgba(74, 144, 226, 0.6);
+        }
+        
+        /* 實際進度 (需用 JavaScript 觸發或手動設定) */
+        .level-60 { width: 60%; }
+        .level-80 { width: 80%; }
+        .level-95 { width: 95%; }
+        
+        /* 進度條容器 hover 效果 */
+        .skill-bar-container:nth-child(1) .progress-level {
+            animation-delay: 0s;
+        }
+        .skill-bar-container:nth-child(2) .progress-level {
+            animation-delay: 0.2s;
+        }
+        .skill-bar-container:nth-child(3) .progress-level {
+            animation-delay: 0.4s;
+        }
+    </style>
+
+   <div class="skills-content">
+    
+    <div class="skill-bar-container">
+        <h3>韓文能力 (60%)</h3> 
+        <div class="progress-bar">
+            <div class="progress-level level-60"></div> </div>
+        <p style="font-size: 0.9em; margin-top: 5px; color: #000000;">國中開始為了偶像自學韓文，目前看得懂字怎麼念，也聽得懂一些，但說的部份還不太行。</p>
+    </div>
+
+    <div class="skill-bar-container">
+        <h3>自律 (80%)</h3> 
+        <div class="progress-bar">
+            <div class="progress-level level-80"></div> </div>
+        <p style="font-size: 0.9em; margin-top: 5px; color: #000000;">上大學離開家裡之後，家人不在身邊就開始更懂得打理、管理好自己。</p>
+    </div>
+
+    <div class="skill-bar-container">
+        <h3>表情包 (95%)</h3> 
+        <div class="progress-bar">
+            <div class="progress-level level-95"></div> </div>
+        <p style="font-size: 0.9em; margin-top: 5px; color: #000000;">許多朋友們都說我是表情包，表情真的很多，但其實我自己都沒注意到。</p>
+    </div>
+    </div>
+</section>
+            
+            <section class="card-section" id="experience-section">
+                <h2 class="section-title">在學幹部經歷</h2>
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <h4>國小 — 南郭國小</h4>
+                        <span class="duration">（2013 — 2019）</span>
+                        <p>職務：班長、副班長。負責班級行政事務、協調班級活動。</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h4>國中 — 彰興國中</h4>
+                        <span class="duration">（2019 — 2022）</span>
+                        <p>職務：風紀、副班長。協助維持秩序、協調班級活動。</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h4>高中 — 彰化高商</h4>
+                        <span class="duration">（2022-2025）</span>
+                        <p>職務：班長、總務。負責班級行政事務與活動籌備。</p>
+                    </div>
+
+                </div>
+            </section>
+
+
+<section class="card-section" id="portfolio-section">
+                <h2 class="section-title">專案作品集</h2>
+                <div class="portfolio-grid">
+                    
+                    <div class="project-item">
+                        <img src="2025-12-09 095549.jpg" alt="牙齒">
+                        <div class="project-details">
+                            <h4>作品名 1：自主學習成果</h4>
+                            <p>這是我高二做的自主學習，內容是有關於牙齒的部分，包括蛀牙、牙套等。</p>
+                            <a href="https://www.canva.com/design/DAF_6noXwpY/Wd-fgvk_4I6UPgYV0hddJQ/edit" target="_blank" class="project-link">查看作品</a>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <img src="2025-12-09 095701.jpg" alt="化學">
+                        <div class="project-details">
+                            <h4>作品名 2：化學專題</h4>
+                            <p>這是我高三做的專題報告，是有關於邦克列酸的介紹。</p>
+                            <a href="https://www.canva.com/design/DAGVejcaeHY/RmpJ23mNbGBERJpWWi2nbw/edit" target="_blank" class="project-link">查看作品</a>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <img src="2025-12-09 095355.jpg" alt="英文">
+                        <div class="project-details">
+                            <h4>作品名 3：英文簡報</h4>
+                            <p>這是我高三英文課做的簡報，是有關於我喜歡的團體BOYNEXTDOOR的介紹。</p>
+                            <a href="https://www.canva.com/design/DAGeyzOjpLA/su0_n94uhJ1HiTqJFpzKcg/edit" target="_blank" class="project-link">查看作品</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // 平滑捲動錨點
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 進度條進入視圖時自動觸發動畫
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 觀察所有技能欄
+        document.querySelectorAll('.skill-bar-container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(10px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // 為導航鏈接添加活躍狀態
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('[id]');
+            const navLinks = document.querySelectorAll('.navbar a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '#ffffff';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.color = '#a0c4ff';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
